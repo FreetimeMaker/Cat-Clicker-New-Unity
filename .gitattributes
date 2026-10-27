@@ -24,6 +24,7 @@
 
 # Solana SDK files
 Assets/Samples/**       lfs
+Packages/com.solana.unity_sdk/**        lfs
 
 # Unity JSON files
 *.asmdef                unity-json
