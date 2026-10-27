@@ -15,7 +15,7 @@ public class ShopChanger : MonoBehaviour
           Shop2.SetActive(false);
           Shop3.SetActive(false);
     }
-    
+
     public void SHOP2()
     {
         Shop1.SetActive(false);

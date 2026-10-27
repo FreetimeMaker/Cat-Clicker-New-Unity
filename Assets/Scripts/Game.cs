@@ -94,22 +94,41 @@ public class Game : MonoBehaviour
         shop6price = PlayerPrefs.GetInt("shop6price", 1600);
     }
 
+    private static string FormatCats(double amount)
+    {
+        string[] suffixes = { "", "K", "M", "B", "T" };
+        int suffixIndex = 0;
+
+        while (amount >= 1000 && suffixIndex < suffixes.Length - 1)
+        {
+            amount /= 1000;
+            suffixIndex++;
+        }
+
+        double truncated = suffixIndex == 0
+                    ? System.Math.Floor(amount)
+                    : System.Math.Floor(amount * 10) / 10;
+        return truncated.ToString(suffixIndex == 0 ? "0" : "0.#",
+            System.Globalization.CultureInfo.InvariantCulture) + suffixes[suffixIndex];
+    }
+
     void Update()
     {
-        scoreText.text = "Cats: " + (int)currentScore;
-        score1Text.text = "Cats: " + (int)currentScore;
+        string formattedScore = "Cats: " + FormatCats(currentScore);
+        scoreText.text = formattedScore;
+        score1Text.text = formattedScore;
 
         // Punkte pro Sekunde berechnen
         scoreIncreasedPerSecond = x * Time.deltaTime;
         currentScore += scoreIncreasedPerSecond;
 
         // Shoptexte updaten
-        shop1text.text = "Autoclicker 1: " + shop1price + " Cats";
-        shop2text.text = "Autoclicker 2: " + shop2price + " Cats";
-        shop3text.text = "Next Button: " + shop3price + " Cats";
-        shop4text.text = "Autoclicker 3: " + shop4price + " Cats";
-        shop5text.text = "Upgrade Cats per Click: " + shop5price + " Cats";
-        shop6text.text = "Upgrade Cats per Second: " + shop6price + " Cats";
+        shop1text.text = "Autoclicker 1: " + FormatCats(shop1price) + " Cats";
+        shop2text.text = "Autoclicker 2: " + FormatCats(shop2price) + " Cats";
+        shop3text.text = "Next Button: " + FormatCats(shop3price) + " Cats";
+        shop4text.text = "Autoclicker 3: " + FormatCats(shop4price) + " Cats";
+        shop5text.text = "Upgrade Cats per Click: " + FormatCats(shop5price) + " Cats";
+        shop6text.text = "Upgrade Cats per Second: " + FormatCats(shop6price) + " Cats";
 
         if (shop1price == 100)
         {
@@ -122,7 +141,7 @@ public class Game : MonoBehaviour
             shop2text.text = "Autoclicker 2: Maxed out";
             shop2bt.text = "Maxed out";
         }
-            
+
         if (shop3price == 419430400)
         {
             shop3text.text = "Next Button: Maxed out";
@@ -266,7 +285,7 @@ public class Game : MonoBehaviour
         {
             Cat3.SetActive(false);
         }
-        
+
         if (CurrentButton == 3)
         {
             Cat4.SetActive(false);
@@ -285,7 +304,7 @@ public class Game : MonoBehaviour
         {
             Cat7.SetActive(false);
         }
-        
+
         if (CurrentButton == 7)
         {
             Cat8.SetActive(false);
@@ -304,7 +323,7 @@ public class Game : MonoBehaviour
         {
             Cat11.SetActive(false);
         }
-        
+
         if (CurrentButton == 11)
         {
             Cat12.SetActive(false);
@@ -323,7 +342,7 @@ public class Game : MonoBehaviour
         {
             Cat15.SetActive(false);
         }
-        
+
         if (CurrentButton == 15)
         {
             Cat16.SetActive(false);
@@ -342,7 +361,7 @@ public class Game : MonoBehaviour
         {
             Cat19.SetActive(false);
         }
-        
+
         if (CurrentButton == 19)
         {
             Cat20.SetActive(false);
@@ -370,7 +389,7 @@ public class Game : MonoBehaviour
         {
             Cat3.SetActive(true);
         }
-        
+
         if (CurrentButton == 3)
         {
             Cat4.SetActive(true);
@@ -389,7 +408,7 @@ public class Game : MonoBehaviour
         {
             Cat7.SetActive(true);
         }
-        
+
         if (CurrentButton == 7)
         {
             Cat8.SetActive(true);
@@ -408,7 +427,7 @@ public class Game : MonoBehaviour
         {
             Cat11.SetActive(true);
         }
-        
+
         if (CurrentButton == 11)
         {
             Cat12.SetActive(true);
@@ -427,7 +446,7 @@ public class Game : MonoBehaviour
         {
             Cat15.SetActive(true);
         }
-        
+
         if (CurrentButton == 15)
         {
             Cat16.SetActive(true);
@@ -446,7 +465,7 @@ public class Game : MonoBehaviour
         {
             Cat19.SetActive(true);
         }
-        
+
         if (CurrentButton == 19)
         {
             Cat20.SetActive(true);
@@ -476,7 +495,7 @@ public class Game : MonoBehaviour
         {
             Cat3.SetActive(false);
         }
-        
+
         if (CurrentButton == 3)
         {
             Cat4.SetActive(false);
@@ -495,7 +514,7 @@ public class Game : MonoBehaviour
         {
             Cat7.SetActive(false);
         }
-        
+
         if (CurrentButton == 7)
         {
             Cat8.SetActive(false);
@@ -514,7 +533,7 @@ public class Game : MonoBehaviour
         {
             Cat11.SetActive(false);
         }
-        
+
         if (CurrentButton == 11)
         {
             Cat12.SetActive(false);
@@ -533,7 +552,7 @@ public class Game : MonoBehaviour
         {
             Cat15.SetActive(false);
         }
-        
+
         if (CurrentButton == 15)
         {
             Cat16.SetActive(false);
@@ -552,7 +571,7 @@ public class Game : MonoBehaviour
         {
             Cat19.SetActive(false);
         }
-        
+
         if (CurrentButton == 19)
         {
             Cat20.SetActive(false);
@@ -582,7 +601,7 @@ public class Game : MonoBehaviour
         {
             Cat3.SetActive(true);
         }
-        
+
         if (CurrentButton == 3)
         {
             Cat4.SetActive(true);
@@ -601,7 +620,7 @@ public class Game : MonoBehaviour
         {
             Cat7.SetActive(true);
         }
-        
+
         if (CurrentButton == 7)
         {
             Cat8.SetActive(true);
@@ -620,7 +639,7 @@ public class Game : MonoBehaviour
         {
             Cat11.SetActive(true);
         }
-        
+
         if (CurrentButton == 11)
         {
             Cat12.SetActive(true);
@@ -639,7 +658,7 @@ public class Game : MonoBehaviour
         {
             Cat15.SetActive(true);
         }
-        
+
         if (CurrentButton == 15)
         {
             Cat16.SetActive(true);
@@ -658,7 +677,7 @@ public class Game : MonoBehaviour
         {
             Cat19.SetActive(true);
         }
-        
+
         if (CurrentButton == 19)
         {
             Cat20.SetActive(true);
@@ -762,7 +781,7 @@ public class Game : MonoBehaviour
             Cat19.SetActive(false);
             Cat20.SetActive(false);
         }
-        
+
         if (CurrentButton == 5)
         {
             Cat1.SetActive(false);
@@ -786,7 +805,7 @@ public class Game : MonoBehaviour
             Cat19.SetActive(false);
             Cat20.SetActive(false);
         }
-        
+
         if (CurrentButton == 6)
         {
             Cat1.SetActive(false);
@@ -810,7 +829,7 @@ public class Game : MonoBehaviour
             Cat19.SetActive(false);
             Cat20.SetActive(false);
         }
-        
+
         if (CurrentButton == 7)
         {
             Cat1.SetActive(false);
@@ -834,7 +853,7 @@ public class Game : MonoBehaviour
             Cat19.SetActive(false);
             Cat20.SetActive(false);
         }
-        
+
         if (CurrentButton == 8)
         {
             Cat1.SetActive(false);
@@ -858,7 +877,7 @@ public class Game : MonoBehaviour
             Cat19.SetActive(false);
             Cat20.SetActive(false);
         }
-        
+
         if (CurrentButton == 9)
         {
             Cat1.SetActive(false);
@@ -882,7 +901,7 @@ public class Game : MonoBehaviour
             Cat19.SetActive(false);
             Cat20.SetActive(false);
         }
-        
+
         if (CurrentButton == 10)
         {
             Cat1.SetActive(false);
@@ -906,7 +925,7 @@ public class Game : MonoBehaviour
             Cat19.SetActive(false);
             Cat20.SetActive(false);
         }
-        
+
         if (CurrentButton == 11)
         {
             Cat1.SetActive(false);
