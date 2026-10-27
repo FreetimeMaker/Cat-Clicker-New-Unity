@@ -22,6 +22,9 @@
 *.raytrace              text linguist-language=hlsl
 *.shader                text
 
+# Solana SDK files
+Assets/Samples/**       lfs
+
 # Unity JSON files
 *.asmdef                unity-json
 *.asmref                unity-json

@@ -1,5 +1,14 @@
 {
   "dependencies": {
+    "com.solana.unity_sdk": {
+      "version": "file:com.solana.unity_sdk",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.0.2",
+        "com.unity.textmeshpro": "3.0.6"
+      }
+    },
     "com.unity.2d.animation": {
       "version": "16.0.0",
       "depth": 0,
@@ -312,6 +321,14 @@
       "dependencies": {
         "com.unity.test-framework": "1.1.33",
         "com.unity.modules.jsonserialize": "1.0.0"
+      }
+    },
+    "com.unity.textmeshpro": {
+      "version": "5.0.0",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.ugui": "2.0.0"
       }
     },
     "com.unity.timeline": {
